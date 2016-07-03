@@ -11,7 +11,12 @@ class Main {
 
         int cases = scan.nextInt();
 
+
         for (int ctr = 0; ctr < cases; ++ctr) {
+
+            scan.nextLine();
+            while(!(scan.nextLine()).equals(""));
+
             int n = scan.nextInt();
 
             int[] ppl = new int[n];
@@ -104,7 +109,7 @@ class Main {
 
 
 
-            System.out.println();
+            if (ctr < (cases - 1)) System.out.println();
 
 
 
