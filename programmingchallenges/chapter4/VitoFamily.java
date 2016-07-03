@@ -21,9 +21,19 @@ class VitoFamily {
 
             Arrays.sort(location);
 
-            int median = (r%2 == 0) ? location[r/2] : (location[r/2] + location[r/2 + 1])/2;
+            int median = (r%2 == 1) ? location[r/2] : (location[r/2] + location[r/2 - 1])/2;
 
+            int totDist = 0;
+            int dist;
 
+            for (int i = 0; i < r; ++i) {
+                dist = median - location[i];
+                dist = dist < 0 ? -dist : dist;
+
+                totDist += dist;
+            }
+
+            System.out.println(totDist);
         }
     }
 }
