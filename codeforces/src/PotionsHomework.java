@@ -17,7 +17,7 @@ public class PotionsHomework {
         long total = 0;
 
         for (int i = 0; i < n; ++i) {
-            total += (arr[i]*arr[n-1-i]) % 10007;
+            total += ((arr[i]%10007)*(arr[n-1-i]%10007)) % 10007;
             total = total % 10007;
         }
 
