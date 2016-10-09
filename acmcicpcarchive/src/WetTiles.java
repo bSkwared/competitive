@@ -1,3 +1,6 @@
+import com.sun.jmx.remote.internal.ArrayQueue;
+
+import java.util.ArrayDeque;
 import java.util.Scanner;
 
 /**
@@ -22,10 +25,10 @@ public class WetTiles {
                 }
             }
 
+            ArrayDeque<Integer> queue = new ArrayDeque<>();
             for (int i = 0; i < L; ++i) {
-                int x = scan.nextInt()-1;
-                int y = scan.nextInt()-1;
-                house[y][x] = 1;
+                queue.addLast(scan.nextInt()-1);
+                queue.addLast(scan.nextInt()-1);
             }
 
             for (int i = 0; i < W; ++i) {
@@ -66,13 +69,46 @@ public class WetTiles {
                     }
                 }
             }
-            for (int i = Y-1; i >= 0; --i) {
-                for (int j = 0; j < X; ++j) {
-                    System.out.print(house[i][j]);
+
+            for (int i = 0; (i < (T-1)) && !queue.isEmpty(); ++i) {
+                int size = queue.size()/2;
+                for (int j = 0; j < size; ++j) {
+                    int x = queue.removeFirst();
+                    int y = queue.removeFirst();
+
+                    if (x > 0 && house[y][x-1] == -1) {
+                        house[y][x-1] = 1;
+                        queue.addLast(x-1);
+                        queue.addLast(y);
+                    }
+                    if (x+1 < X && house[y][x+1] == -1) {
+                        house[y][x+1] = 1;
+                        queue.addLast(x+1);
+                        queue.addLast(y);
+                    }
+
+                    if (y > 0 && house[y-1][x] == -1) {
+                        house[y-1][x] = 1;
+                        queue.addLast(x);
+                        queue.addLast(y-1);
+                    }
+                    if (y+1 < Y && house[y+1][x] == -1) {
+                        house[y+1][x] = 1;
+                        queue.addLast(x);
+                        queue.addLast(y+1);
+                    }
                 }
-                System.out.println("");
+
             }
 
+            int tileCtr = 0;
+            for (int i = Y-1; i >= 0; --i) {
+                for (int j = 0; j < X; ++j) {
+                    if (house[i][j] == 1) ++tileCtr;
+                }
+            }
+
+            System.out.println(tileCtr);
 
 
         }
