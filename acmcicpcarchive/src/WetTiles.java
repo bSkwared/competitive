@@ -123,7 +123,7 @@ public class WetTiles {
                     if (house[i][j] == 1) ++tileCtr;
                     //System.out.print(house[i][j]);
                 }
-                //System.out.println();
+                //System.out.println);
             }
             /*if (isFirst) { isFirst = false; }
             else {
