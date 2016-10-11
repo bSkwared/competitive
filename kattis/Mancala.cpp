@@ -3,15 +3,15 @@
 using namespace std;
 
 int dp[20000][80];
-int[] getBins(int n) {
-    int[] thisDP = dp[n-1];
+int* getBins(int n) {
+    int* thisDP = dp[n-1];
     
     if (thisDP[0] != -1) {
         return thisDP;
     }
 
     
-    int[] prev = getBins(n-1);
+    int* prev = getBins(n-1);
     FOR(i,80) {
         thisDP[i] = prev[i];
     }
@@ -25,6 +25,11 @@ int[] getBins(int n) {
         thisDP[i]--;
         
     }
+    thisDP[index] = index+1;
+    if (index < 79) {
+        thisDP[index+1] = -1;
+    }
+
 
     return thisDP;
 }
