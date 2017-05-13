@@ -60,21 +60,7 @@ public class CompletingTheSquare {
                 }
             }
         }
-        /*
-            if (dist12 - 0.001 > dist13) {
-                x = x3 + ((y1 - y2) * -1);
-                y = y3 + ((x1 - x2) * -1);
 
-            } else if (dist13 - 0.001 > dist23) {
-                x = x2 + ((y1 - y3) * -1);
-                y = y2 + ((x1 - x3) * -1);
-
-            } else {
-                // dist23 is the max
-                x = x1 + ((y2 - y1) * -1);
-                y = y1 + ((x2 - x1) * -1);
-
-            }*/
 
         System.out.println(x + " " + y);
         return;
