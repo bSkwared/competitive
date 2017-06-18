@@ -1,3 +1,5 @@
+// Problem statement: https://www.codechef.com/problems/COINS
+
 import java.util.HashMap;
 import java.util.Scanner;
 
