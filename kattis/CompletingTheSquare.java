@@ -1,3 +1,4 @@
+// Problem statement: https://open.kattis.com/problems/completingthesquare
 
 import java.util.Scanner;
 
