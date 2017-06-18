@@ -1,3 +1,5 @@
+// Problem statement: https://open.kattis.com/problems/millionairemadness
+
 import java.util.Arrays;
 import java.util.Scanner;
 

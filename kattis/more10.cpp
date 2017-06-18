@@ -1,3 +1,5 @@
+// Problem statement: https://open.kattis.com/problems/more10
+
 #include <iostream>
 #include <unordered_map>
 #include <vector>
