@@ -1,5 +1,5 @@
-# See balanceddiet.java for a java implementation
-# of this that will not get TLE
+# See balanceddiet.java for a less optimized java implementation
+# This was originally TLE'ing, but I optimized it a bit and now accepts.
 
 while True:
     line = list(map(int, input().split()))
@@ -7,35 +7,30 @@ while True:
     if n == 0:
         break
 
+    if n == 1:
+        print("{} 0".format(line[1]))
+        continue
+
     cans = line[1:]
     cal_sum = sum(cans)
-    length = int(cal_sum/2) + 1
-    has_sum = [False] * length
+    has_sum = set()
 
+    max_meal = int(cal_sum/2 + 0.5)
 
     for can in cans:
-
-        for i in range(length-1, -1, -1):
-            if has_sum[i] and can + i < length:
-                has_sum[can+i] = True
-
-        if can < length:
-            has_sum[can] = True
+        copy_has = has_sum.copy()
+        for sm in copy_has:
+            if sm + can <= max_meal:
+                has_sum.add(sm+can)
+        if can <= max_meal:
+            has_sum.add(can)
     
-    best_i = 0
-    min_diff = cal_sum
-    for i in range(length-1, -1, -1):
-        if has_sum[i]:
-            best_i = i
-            break
-            a = cal_sum - i
-            b = cal_sum - a
-            cur_diff = a - b
-            if cur_diff < 0:
-                cur_diff = -cur_diff
-            if cur_diff < min_diff:
-                best_i = i
-                min_diff = cur_diff
+    try:
+        meals = list(has_sum)
+        meals.sort()
+        best_i = meals[-1]
+    except:
+        exit()
 
     m1 = cal_sum - best_i
     m2 = cal_sum - m1
