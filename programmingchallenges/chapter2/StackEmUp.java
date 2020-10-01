@@ -7,7 +7,7 @@ class StackEmUp
     public static void main (String[] args) throws java.lang.Exception
     {
         Scanner scan = new Scanner(System.in);
-        int[] deck = new int[52];
+        int[] deck = new int[52];  //deck object for accessing 52 playing cards
 
 
 
